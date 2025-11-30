@@ -13,7 +13,8 @@ namespace EasyOptimization.Views.Windows
         public MainWindow(
             MainWindowViewModel viewModel,
             INavigationViewPageProvider navigationViewPageProvider,
-            INavigationService navigationService
+            INavigationService navigationService,
+            IContentDialogService contentDialogService
         )
         {
             ViewModel = viewModel;
@@ -23,7 +24,7 @@ namespace EasyOptimization.Views.Windows
 
             InitializeComponent();
             SetPageService(navigationViewPageProvider);
-
+            contentDialogService.SetDialogHost(RootContentDialog);
             navigationService.SetNavigationControl(RootNavigation);
         }
 

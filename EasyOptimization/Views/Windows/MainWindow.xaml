@@ -7,8 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml"
     Title="{Binding ViewModel.ApplicationTitle, Mode=OneWay}"
-    Width="1100"
-    Height="650"
     d:DataContext="{d:DesignInstance local:MainWindow,
                                      IsDesignTimeCreatable=True}"
     d:DesignHeight="450"
@@ -17,7 +15,7 @@
     WindowBackdropType="Mica"
     WindowCornerPreference="Round"
     WindowStartupLocation="CenterScreen"
-    mc:Ignorable="d" WindowStyle="None" ResizeMode="NoResize">
+    mc:Ignorable="d" WindowStyle="None" MinWidth="1207" MinHeight="750">
     <ui:FluentWindow.InputBindings>
         <KeyBinding
             Key="F"
@@ -29,7 +27,7 @@
         <ui:TitleBar
             x:Name="TitleBar"
             Title="{Binding ViewModel.ApplicationTitle}"
-            Grid.Row="0" CanMaximize="False" ShowMaximize="False">
+            Grid.Row="0">
             <ui:TitleBar.Icon>
                 <ui:ImageIcon Source="pack://application:,,,/Assets/Images/EasyOptimization-256.png" />
             </ui:TitleBar.Icon>

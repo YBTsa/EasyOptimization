@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Reflection;
+using System.Windows.Controls;
 using System.Windows.Threading;
 using EasyOptimization.Services;
 using EasyOptimization.ViewModels.Pages;
@@ -41,6 +42,7 @@ namespace EasyOptimization
 
                 // Service containing navigation, same as INavigationWindow... but without window
                 services.AddSingleton<INavigationService, NavigationService>();
+                services.AddSingleton<IContentDialogService, ContentDialogService>();
 
                 // Main window with navigation
                 services.AddSingleton<INavigationWindow, MainWindow>();

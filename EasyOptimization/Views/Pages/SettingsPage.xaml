@@ -12,9 +12,6 @@
                                      IsDesignTimeCreatable=False}"
     d:DesignHeight="450"
     d:DesignWidth="800"
-    ui:Design.Background="{DynamicResource ApplicationBackgroundBrush}"
-    ui:Design.Foreground="{DynamicResource TextFillColorPrimaryBrush}"
-    Foreground="{DynamicResource TextFillColorPrimaryBrush}"
     mc:Ignorable="d">
     <Page.Resources>
         <helpers:EnumToBooleanConverter x:Key="EnumToBooleanConverter" />
@@ -40,7 +37,9 @@
             Content="Dark"
             GroupName="themeSelect"
             IsChecked="{Binding ViewModel.CurrentTheme, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=Dark, Mode=OneWay}" />
-
+        <TextBlock Margin="0,12,0,0">Features</TextBlock>
+        <CheckBox Margin="0,12,0,0">Enable log compressor</CheckBox>
+        <ui:Button Appearance="Primary" Icon="{ui:SymbolIcon Save24}" Command="{Binding ViewModel.SaveSettingsCommand}" Margin="0,12,0,0">Save</ui:Button>
         <TextBlock
             Margin="0,24,0,0"
             FontSize="20"

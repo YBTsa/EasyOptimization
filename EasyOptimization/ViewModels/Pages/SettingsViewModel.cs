@@ -1,9 +1,13 @@
-﻿using Wpf.Ui.Abstractions.Controls;
+﻿using System.Diagnostics;
+using Wpf.Ui;
+using Wpf.Ui.Abstractions.Controls;
 using Wpf.Ui.Appearance;
+using Wpf.Ui.Controls;
+using Wpf.Ui.Extensions;
 
 namespace EasyOptimization.ViewModels.Pages
 {
-    public partial class SettingsViewModel : ObservableObject, INavigationAware
+    public partial class SettingsViewModel(IContentDialogService contentDialogService) : ObservableObject, INavigationAware
     {
         private bool _isInitialized = false;
 
@@ -59,6 +63,24 @@ namespace EasyOptimization.ViewModels.Pages
                     CurrentTheme = ApplicationTheme.Dark;
 
                     break;
+            }
+        }
+        [RelayCommand]
+        private async Task SaveSettings()
+        {
+            ContentDialogResult result = await contentDialogService.ShowSimpleDialogAsync(
+                new SimpleContentDialogCreateOptions()
+                {
+                    Title = "Settings",
+                    Content = "Please reboot application to save your settings.",
+                    PrimaryButtonText = "Reboot",
+                    CloseButtonText = "Not now"
+                }            
+            );
+            if(result == ContentDialogResult.Primary)
+            {
+                Process.Start(Environment.ProcessPath!);
+                Application.Current.Shutdown();
             }
         }
     }
